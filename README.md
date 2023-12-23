@@ -29,7 +29,7 @@ Since only one user (person or device) has a copy of a private key file. It make
 
 #### **Fingerprinting Keys**
 
-Using a one way hashing algorithm. We can make a fingerprint of a key. **One way hashing algorithms will always produce a unique output for every unique input**. If they produce two same outputs for two different inputs (or vice a versa), this would be called a **hash collision** and render the algorithm obsolete.
+Using a one way hashing algorithm, e can make a fingerprint of a key. **One way hashing algorithms will always produce a unique output for every unique input**. If they produce two same outputs for two different inputs (or vice a versa), this would be called a **hash collision** and render the algorithm obsolete.
 
 ***More on this later...***
 
@@ -97,7 +97,7 @@ After this you will end up with the file: `id_ed25519.asc`.
 ### Decrypting the private key file
 
 ```																																																																		bash
-gpg -a --decrypt id_ed25519.asc --output id_ed25519
+gpg -a --decrypt id_ed25519.asc > id_ed25519
 ```
 
 ## Backing the keys up on GitHub
