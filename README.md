@@ -97,8 +97,10 @@ After this you will end up with the file: `id_ed25519.asc`.
 ### Decrypting the private key file
 
 ```																																																																		bash
-gpg -a --decrypt id_ed25519.asc > id_ed25519
+gpg id_ed25519.asc
 ```
+
+> **Note:** No Additional options are needed. decrypt is standard
 
 ## Backing the keys up on GitHub
 
