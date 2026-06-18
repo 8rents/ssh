@@ -1,2 +1,5 @@
 # Ignore private keys
 id_ed25519
+
+# Ignore known hosts file
+known_host*
