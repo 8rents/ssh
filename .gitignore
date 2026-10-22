@@ -1,5 +1,7 @@
 # Ignore private keys
 id_ed25519
+8rents@git-signing
 
 # Ignore known hosts file
-known_host*
+known_host
+
