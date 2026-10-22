@@ -1,14 +1,13 @@
-[Read Me](../README.md) __|__ [To Do List](../TODO.md) __|__ [__Docs__](README.md)
+
+[SSH Readme](../README.md) __|__ [__Documemtation__](README.md)
 
 ---
 
-This is Part 4 of 7 articles on SSH
+__Part: 3__ of 6 in the [series on SSH](README.md)
 
----
+# Using SSH Keys for Authentication
 
-__Part 4__
-
-# Using SSH Keys to login to a Server & GitHub
+First we will look at using keys to login to a server. Then we will look at 
 
 ---
 

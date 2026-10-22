@@ -1,12 +1,8 @@
-[Read Me](../README.md) __|__ [To Do List](../TODO.md) __|__ [__Docs__](README.md)
+[SSH Readme](../README.md) __|__ [__Documemtation__](README.md)
 
 ---
 
-This is Part 5 of 6 in the SSH Series
-
----
-
-__Part 5__
+__Part: 5__ of 6 in the [series on SSH](README.md)
 
 # Using a Backed up Keypair
 
@@ -25,17 +21,14 @@ k="$HOME/dotfiles/keys/ssh"
 ## Clone this Repository
 
 ```bash
-cd ~
- 
-git clone https://github.com/8rents/ssh $k
+cd ~ && git clone https://github.com/8rents/ssh $k
 ```
 
 ## Decrypt the private key
 
 ```
-cd $k
-
-pgp <private-key-name>
+cd $k 
+gpg <private-key-name>
 ```
 
 Enter the PGP Passphrase when prompted. 

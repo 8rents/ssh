@@ -1,43 +1,64 @@
-[Read Me](../README.md) __|__ [To Do List](TODO.md) __|__ [__Docs__](docs/README.md)
+[SSH Readme](../README.md) __|__ [__Documemtation__](README.md)
 
 ---
 
-This is Part 4 of 7 articles on SSH
-
----
-
-__Part 4__
+__Part: 4__ of 6 in the [series on SSH](README.md)
 
 # Backing up ssh keys on GitHub
 
+Since we don't want to share our private key with anyone. It's beat practice to encrypt it bwfore backing it up.
 
-## Encrypting Private Keys with PGP
+## Encrypting your private SSH Keys with PGP
+
+### Install GPG
+
+*on windows* use `gpg-tools`
 
 ```bash
-# Install gpg tools with scoop
+# Install `gpg-tools` with `scoop`
 scoop install gpg
+```
+
+*on Linux/Debian* use `gnupg`
+
+```
+# install gnupg with apt
+apt install gnupg -y
 ```
 
 ### Creating an encrypted file
 
+We want to encrypt our private SSH key with a password and then set git to ignore the private key file
+
 ```bash
 # Change to your ssh folder
-cd ~\.ssh
-
-# Encrypt the private key file
-gpg -a --symmetric --cipher-algo AES256 id_ed25519
+cd ~/.ssh
 ```
 
-- `-a` encodes the file with ASCII armor so that it is easy to copy into a message or send as an attachment. These files have the file ending in `.asc`.
-- `--symmetric` using one key (passcode) instead of a pair (public/private) keys.
-- ` --cipher-algo` we are using AES256
+My private key is called `id_ed25519`
 
-This will ask us to enter a passcode twice. I recommend creating the passcode first and then copy it in.
+```
+# Encrypt the private key file
+gpg -a --symmetric id_ed25519
+```
+
+> Options Reference
+>
+>  `-a` encodes the file with ASCII armor so that it is easy to copy into a m> essage or send as an attachment. These files have the file ending in `.asc`.
+> - `--symmetric` using one key (passcode) instead of a pair (public/private) keys
+
+This will ask us to enter a passcode twice. I recommend creating the passcode first and then copy it in. I both create and store my passcode in Bitwarden.
 
 After this you will end up with the file: `id_ed25519.asc`.
 
-## Add the unencrypted private key to the gitignore file
+## Add the unencrypted private key to the `.gitignore` file
 
+
+```
+echo "id_ed25519.asc" > .gitignore
+```
+
+Then when you commit and push the repository only the encrypted file will be uploaded to GitHub.
 
 ---
 
