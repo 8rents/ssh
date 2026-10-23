@@ -40,18 +40,133 @@ Feel free to **[skip the philosophical bit if you just want to verify your keys 
 > 
 > This now opens working (without trust) but with full confidence with who you interact with in a fully anonymized space.
 
-##Signing GitHub Commits
+## Signing GitHub Commits
 
 When you release a piece of software, wouldn't it be nice to let your users know that it was not tampered with in anyway?
 
 You can! It's simple, You can cryptographically sign your git commits. Here's how to do it.
 
+### Getting set up to sign commits
 
+I'm my mind it's best practice to create a new SSH key called `user@github.signing` and give it a command like: 
 
+```
+8rents GitHub commit signing key. Created: 26/10/17 Exp: None
+```
 
+#### Creating a new key for signing commits 
 
+- `-f` is the output file 
+- `-C` is the keys Comment
 
+```bash
+ssh-keygen -f ~/.ssh/8rents@github.commit.signing -C "8rents GitHub commit signing key. Created: 26/10/17 Exp: None"
+```
 
+#### Fingerprint the key
+
+- `-l` - Gets fingerprint hash
+
+```
+ssh-keygen -l -f ~/.ssh/8rents@github.commit.signing >> 8rents@github.commit.signing.fingerprint
+```
+
+Now that the key is created, let's encrypt it so we can back it up to Github
+
+### Encrypting the private key
+
+- `-a` - Tells GPG to ASCII encode the encryption so it acts as a normal text file
+- `--symmetric` - Tells GPG to encrypt the key with a passcode instead of another key
+
+```
+cd ~/.ssh
+gpg -a --symmetric 8rents@github.commit.signing
+```
+
+Enter a secure passphrase 2x and hit ok.
+
+Now you'll have an `.asc` file with an encrypted private key.
+
+> Make sure to back up the key passphase in a password manager like BitWarden. I'll make a new SSH key item and create several custom fields like:
+
+- `gpg passphrase`
+- `fingerprint`
+- `public key`
+- `date created`
+
+And in the Note Field I'll list the commands that I used to create and encrypt the key.
+
+#### Add the unencrypted private key to the `.gitignore` file
+
+```
+echo "8rents@github.commit.signing" >> .gitignore
+```
+
+#### Edit your git config file to sign commits
+
+Tell git you want to use an ssh key to sign commits instead of a gpg key.
+
+```
+git config --global gpg.format ssh
+```
+
+Then add the public signing key you created to your gitconfig to sign commits
+
+```
+git config --global user.signingkey ~/.ssh/8rents@github.commit.signing.pub
+```
+
+And tell git you want to sign all commits in the future
+
+And then tell git you always want to sign commits
+
+```
+git config --global commit.gpgsign true
+```
+
+Normally to sign a commit you would need to use the `-S` flag on the commit.
+
+```
+git commit -S -m "commit message"
+```
+
+However we've added to our user profile in the global gitconfig to sign all commits with the new key there's one thing left to do.
+
+##### Tell GitHub which key will be your signing key
+
+You want to upload the public signing key file to GitHub. Thi way GitHub know that it's us with the key. You can either: 
+
+1. Do this on the website through settings
+2. Use the `gh` CLI program to upload the keyfile
+
+Using `gh`:
+
+```
+gh ssh-key add .ssh/8rents@git-signing.pub -t "8rents signing ssh key. Added: 10/22/26" --type signing
+```
+
+If the upload was sucessful, you'll get an email within a minute confirming the new key.
+
+#### Commit the SSH repo and test out the new key
+
+Once again verify that the `8rents@github.commit.signing` private key wasn't commited into the repository. 
+
+```
+git status
+```
+
+We only want the keyfiles ending in `.asc`, `.pub` and `.fingerprint`
+
+Once you've confirmed that the private key is being ignored go ahead and:
+
+##### Add all new files to the repo and commit it
+
+```
+# Stages all files
+git add -A
+
+# commit
+```
 
 
 
