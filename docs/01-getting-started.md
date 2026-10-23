@@ -1,8 +1,8 @@
-[SSH Readme](../README.md) __|__ [__Documemtation__](README.md)
+[SSH](../README.md) __|__ [__Documemtation__](README.md)
 
 ---
 
-__Part: 1__ of 6 in the [series on SSH](README.md)
+__Part: 1__ of [6 in the series on SSH](README.md)
 
 # Getting started with SSH
 
@@ -49,3 +49,7 @@ Now that OpenSSH is installed the first thing we will do is create a new key pai
 ---
 
 __Next Article:__ [Part 2: Creating a New SSH Keypair](02-creating-new-ssh-keypair.md)
+
+---
+
+__(Ɔ) 2026__ [8rents](https://github.com/8rents) & licensed under [Love](../LICENSE.md)

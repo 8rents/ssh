@@ -1,8 +1,8 @@
-[SSH Readme](../README.md) __|__ [__Documemtation__](README.md)
+[SSH](../README.md) __|__ [__Documemtation__](README.md)
 
 ---
 
-__Part: 2__ of 6 in the [series on SSH](README.md)
+__Part: 2__ of [6 in the series on SSH](README.md)
 
 # Creating our first keypair
 
@@ -95,3 +95,7 @@ Now that we have a fingerprint we can be sure that our keys haven't been tampere
 ---
 
 __Next Article:__ [Part 3: Using SSH Keys to Login to Server & GitHub ](03-using-keys-login.md)
+
+---
+
+__(Ɔ) 2026__ [8rents](https://github.com/8rents) & licensed under [Love](../LICENSE.md)

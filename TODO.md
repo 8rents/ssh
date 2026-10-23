@@ -1,4 +1,4 @@
-[Read Me](README.md) __|__ __To Do List__ __|__ [Docs](docs/README.md)
+[SSH](../README.md) __|__ __[Documentation](README.md)__
 
 ---
 
@@ -22,3 +22,7 @@
 - [x] encrypt private key and decrypt proving it works
 - [x] Finish linking all of the docs
 - [x] Finish guide on SSH identification 
+
+---
+
+__(Ɔ) 2026__ [8rents](https://github.com/8rents) & licensed under [Love](../LICENSE.md)

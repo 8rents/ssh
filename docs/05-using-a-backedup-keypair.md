@@ -1,8 +1,8 @@
-[SSH Readme](../README.md) __|__ [__Documemtation__](README.md)
+[SSH](../README.md) __|__ [__Documemtation__](README.md)
 
 ---
 
-__Part: 5__ of 6 in the [series on SSH](README.md)
+__Part: 5__ of [6 article series on SSH](README.md)
 
 # Using a Backed up Keypair
 
@@ -49,3 +49,7 @@ Now you have cloned your backed up keys to a new machine.
 ---
 
 __Next Article:__ [Part 6: Using SSH Keys to Verify Identity](06-verify-identity.md)
+
+---
+
+__(Ɔ) 2026__ [8rents](https://github.com/8rents) & licensed under [Love](../LICENSE.md)

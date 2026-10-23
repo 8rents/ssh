@@ -1,4 +1,4 @@
-__Read Me__ __|__ [To Do List](TODO.md) __|__ [Docs](docs/README.md)
+__SSH__ __|__ [Documentation](docs/README.md)
 
 ---
 
@@ -14,4 +14,4 @@ In this series of 6 articles I cover everything from installation, key creation,
 
 ---
 
-**🤍 2023 [Brenton Holiday](https://brenton.holiday)**
+__(Ɔ) 2026__ [8rents](https://github.com/8rents) & licensed under [Love](LICENSE.md)

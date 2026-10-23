@@ -1,6 +1,6 @@
-[SSH Readme](../README.md) __|__ [__Documemtation__](README.md)
+[SSH](../README.md) __|__ [__Documemtation__](README.md)
 
-__Part: 6__ of 6 in the [series on SSH](README.md)
+__Part: 6__ of [6 article series on SSH](README.md)
 
 # Using SSH Keys to Verify Identity
 
@@ -99,7 +99,7 @@ And in the Note Field I'll list the commands that I used to create and encrypt t
 #### Add the unencrypted private key to the `.gitignore` file
 
 ```
-echo "8rents@github.commit.signing" >> .gitignore
+echo "8rents@git-signing" >> .gitignore
 ```
 
 #### Edit your git config file to sign commits
@@ -113,7 +113,7 @@ git config --global gpg.format ssh
 Then add the public signing key you created to your gitconfig to sign commits
 
 ```
-git config --global user.signingkey ~/.ssh/8rents@github.commit.signing.pub
+git config --global user.signingkey ~/.ssh/8rents@git-signing.pub
 ```
 
 And tell git you want to sign all commits in the future
@@ -147,9 +147,41 @@ gh ssh-key add .ssh/8rents@git-signing.pub -t "8rents signing ssh key. Added: 10
 
 If the upload was sucessful, you'll get an email within a minute confirming the new key.
 
+#### Create a local `gpg.ssh.allowedSignersFile` in your `~/.ssh` directory
+
+`gpg.ssh.allowedSignersFile` is a Git configuration setting used to specify the path to a file containing a list of trusted SSH public keys.
+
+```
+# Create the file
+touch ~/.ssh/allowed_signers
+
+# Tell Git where to find it
+git config --global gpg.ssh.allowedSignersFile "~/.ssh/allowed_signers"
+```
+
+The file requires a specific syntax where each line links a "principal" (usually a commit author's email address) to their public key.
+
+To add your own key to your local allowed signers list, run the following command 
+
+```
+echo "$(git config --get user.email) namespaces=\"git\" $(cat ~/.ssh/8rents@git-signing.pub)" >> ~/.ssh/allowed_signers
+```
+
+#### Check over the `~/.ssh/allowed_signers` file
+
+```
+cat ~/.ssh/allowed_signers
+```
+
+It should look similar to this:
+
+```
+8rents@gmail.com namespaces="git" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBkx4yGeoS31zI4bEJs9J5s7HRFp/FYs1nmKJnVfb611 Brent's git commit signing key. Created: 10/22/26; Exp: NONE
+```
+
 #### Commit the SSH repo and test out the new key
 
-Once again verify that the `8rents@github.commit.signing` private key wasn't commited into the repository. 
+Once again verify that the `8rents@git-signing` private key wasn't commited into the repository. 
 
 ```
 git status
@@ -166,10 +198,15 @@ Once you've confirmed that the private key is being ignored go ahead and:
 git add -A
 
 # commit
+git commit
+
+# git push
 ```
 
 
+---
 
+__(Ɔ) 2026__ [8rents](https://github.com/8rents) & licensed under [Love](../LICENSE.md)
 
 
 

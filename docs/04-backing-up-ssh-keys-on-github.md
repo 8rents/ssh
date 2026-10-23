@@ -1,8 +1,8 @@
-[SSH Readme](../README.md) __|__ [__Documemtation__](README.md)
+[SSH](../README.md) __|__ [__Documemtation__](README.md)
 
 ---
 
-__Part: 4__ of 6 in the [series on SSH](README.md)
+__Part: 4__ of [6 in the series on SSH](README.md)
 
 # Backing up ssh keys on GitHub
 
@@ -63,3 +63,7 @@ Then when you commit and push the repository only the encrypted file will be upl
 ---
 
 __Next Article:__ [Part 5: Using a Backed up Keypair on a new Machine](05-using-a-backedup-keypair.md)
+
+---
+
+__(Ɔ) 2026__ [8rents](https://github.com/8rents) & licensed under [Love](../LICENSE.md)
